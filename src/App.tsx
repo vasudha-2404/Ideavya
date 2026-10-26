@@ -3,6 +3,8 @@ import { Component, type ReactNode, type ErrorInfo } from 'react';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import AppRoutes from './routes/AppRoutes';
+import { AuthProvider } from './context/AuthContext';
+import { IdeathonProvider } from './context/IdeathonContext';
 
 // ── Error Boundary ────────────────────────────────────────────────────────────
 interface ErrorBoundaryState { hasError: boolean; error: Error | null }
@@ -72,13 +74,17 @@ export default function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <div className="flex-1">
-            <AppRoutes />
-          </div>
-          <Footer />
-        </div>
+        <AuthProvider>
+          <IdeathonProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <div className="flex-1">
+                <AppRoutes />
+              </div>
+              <Footer />
+            </div>
+          </IdeathonProvider>
+        </AuthProvider>
       </BrowserRouter>
     </ErrorBoundary>
   );

@@ -1,20 +1,22 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Zap, Menu, X, History, ShieldCheck } from 'lucide-react';
+import { Zap, Menu, X, Shield, LayoutDashboard, UserCheck, ShieldCheck } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useAuth } from '../../context/AuthContext';
 
 const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
   { label: 'Tracks', path: '/tracks' },
   { label: 'Schedule', path: '/schedule' },
-  { label: 'Team', path: '/team' },
-  { label: 'Contact', path: '/contact' },
+  { label: 'Prizes', path: '/prizes' },
+  { label: 'Dashboard', path: '/dashboard' },
 ];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const { user } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -54,7 +56,7 @@ export default function Header() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   location.pathname === link.path
                     ? 'text-brand-400 bg-brand-500/10'
                     : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -63,29 +65,66 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+
+            {/* Role-specific quick links */}
+            {user?.role === 'judge' && (
+              <Link
+                to="/judge"
+                className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all ${
+                  location.pathname === '/judge'
+                    ? 'text-purple-300 bg-purple-500/20'
+                    : 'text-purple-400 hover:bg-purple-500/10'
+                }`}
+              >
+                <Shield size={13} />
+                Judge Portal
+              </Link>
+            )}
+
+            {user?.role === 'admin' && (
+              <Link
+                to="/admin"
+                className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all ${
+                  location.pathname === '/admin'
+                    ? 'text-emerald-300 bg-emerald-500/20'
+                    : 'text-emerald-400 hover:bg-emerald-500/10'
+                }`}
+              >
+                <ShieldCheck size={13} />
+                Admin Portal
+              </Link>
+            )}
           </nav>
 
           {/* Right side actions */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              to="/payment/history"
-              id="header-history-link"
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                location.pathname === '/payment/history'
-                  ? 'text-brand-400 bg-brand-500/10'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
-              }`}
-              title="My Payments"
-            >
-              <History size={15} />
-              <span className="hidden lg:inline">My Payments</span>
-            </Link>
-            <Link to="/register" id="header-register-btn" className="btn-primary text-sm py-2.5">
-              Register Now
+            {user ? (
+              <Link
+                to="/login"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs text-gray-300 hover:bg-white/10 transition-colors"
+                title="Switch Role or Account"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span className="font-medium text-white max-w-[100px] truncate">{user.name.split(' ')[0]}</span>
+                <span className="text-[10px] uppercase font-mono px-1.5 py-0.2 bg-white/10 rounded text-gray-400">
+                  {user.role}
+                </span>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="text-xs font-semibold text-gray-300 hover:text-white px-3 py-2"
+              >
+                Sign In
+              </Link>
+            )}
+
+            <Link to="/register" id="header-register-btn" className="btn-primary text-xs py-2 px-4">
+              Register Team
             </Link>
 
             {/* Pathvision Logo on the Right */}
-            <div className="flex items-center pl-3 border-l border-white/10" title="Industry Partner: Pathvision">
+            <div className="flex items-center pl-3 border-l border-white/10" title="Industry Partner: Pathvision Innovations">
               <a
                 href="https://www.mits.ac.in"
                 target="_blank"
@@ -94,7 +133,7 @@ export default function Header() {
               >
                 <img
                   src="/pathvision-logo.png"
-                  alt="Pathvision"
+                  alt="Pathvision Innovations"
                   className="h-6 w-auto object-contain"
                 />
               </a>
@@ -106,7 +145,7 @@ export default function Header() {
             <div className="bg-white rounded-lg px-2 py-0.5 shadow-sm">
               <img
                 src="/pathvision-logo.png"
-                alt="Pathvision"
+                alt="Pathvision Innovations"
                 className="h-5 w-auto object-contain"
               />
             </div>
@@ -137,24 +176,40 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+
           <div className="border-t border-white/10 mt-2 pt-2 space-y-1">
             <Link
-              to="/payment/history"
-              className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+              to="/dashboard"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
             >
-              <History size={15} />
-              My Payments
+              <LayoutDashboard size={15} />
+              Participant Dashboard
             </Link>
             <Link
-              to="/admin/payments?admin=true"
-              className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-300 hover:bg-white/5 transition-colors"
+              to="/judge"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-purple-400 hover:bg-white/5 transition-colors"
+            >
+              <Shield size={15} />
+              Judge Portal
+            </Link>
+            <Link
+              to="/admin"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-emerald-400 hover:bg-white/5 transition-colors"
             >
               <ShieldCheck size={15} />
-              Admin
+              Admin Portal
+            </Link>
+            <Link
+              to="/login"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+            >
+              <UserCheck size={15} />
+              Login / Switch Role
             </Link>
           </div>
-          <Link to="/register" className="btn-primary text-sm mt-2 justify-center">
-            Register Now
+
+          <Link to="/register" className="btn-primary text-sm mt-3 justify-center">
+            Register Team
           </Link>
         </div>
       )}

@@ -2,9 +2,13 @@ import { Link } from 'react-router-dom';
 import {
   Zap, Trophy, Users, Calendar, ArrowRight,
   Cpu, Building2, Car, Leaf, HeartHandshake, ChevronDown,
-  MapPin, CheckCircle2, Layers, Award, Sparkles
+  MapPin, CheckCircle2, Layers, Award, Sparkles, Target, Compass
 } from 'lucide-react';
 import RegistrationFeeCard from '../components/payment/RegistrationFeeCard';
+import EventCountdown from '../components/home/EventCountdown';
+import HomePrizesSection from '../components/home/HomePrizesSection';
+import SponsorsSection from '../components/home/SponsorsSection';
+import HomeFAQSection from '../components/home/HomeFAQSection';
 
 // ─── Data from Official Poster ───────────────────────────────────────────────
 
@@ -166,7 +170,6 @@ function HeroSection() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-600/30 rounded-full blur-3xl animate-pulse-slow" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl animate-pulse-slow animation-delay-400" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-500/5 rounded-full blur-3xl" />
-        {/* Grid overlay */}
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -187,22 +190,16 @@ function HeroSection() {
           <span className="text-gray-500">•</span>
           <div className="flex items-center gap-2">
             <span className="text-xs text-gray-200 font-medium">In Association with</span>
-            <div className="bg-white rounded-lg px-2.5 py-1 shadow-md flex items-center justify-center">
-              <img
-                src="/pathvision-logo.png"
-                alt="Pathvision Logo"
-                className="h-6 w-auto object-contain"
-              />
-            </div>
+            <span className="text-xs font-bold text-cyan-300 tracking-wide">Pathvision Innovations</span>
           </div>
         </div>
         <p className="text-[11px] text-gray-400 mt-2 tracking-wide">
-          MADANAPALLE INSTITUTE OF TECHNOLOGY & SCIENCE (Deemed to be University under section 3 of UGC Act, 1956)
+          MADANAPALLE INSTITUTE OF TECHNOLOGY &amp; SCIENCE (Deemed to be University under section 3 of UGC Act, 1956)
         </p>
       </div>
 
       {/* Date & Venue Badge (From Poster) */}
-      <div className="animate-fade-up animation-delay-200 relative z-10 mb-6">
+      <div className="animate-fade-up animation-delay-200 relative z-10 mb-4">
         <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-brand-500/20 border border-brand-500/40 text-brand-300 text-sm font-semibold shadow-lg shadow-brand-500/20">
           <Zap size={14} className="text-brand-400" fill="currentColor" />
           10 &amp; 11 November 2026 · MITS Deemed to be University CAMPUS
@@ -222,12 +219,17 @@ function HeroSection() {
       </div>
 
       {/* Slogan */}
-      <p className="animate-fade-up animation-delay-400 relative z-10 mt-5 font-display text-sm md:text-base font-bold uppercase tracking-widest text-cyan-400 text-center max-w-2xl">
+      <p className="animate-fade-up animation-delay-400 relative z-10 mt-4 font-display text-sm md:text-base font-bold uppercase tracking-widest text-cyan-400 text-center max-w-2xl">
         Turn Real-World Challenges into Real Solutions
       </p>
 
+      {/* Live Event Countdown */}
+      <div className="animate-fade-up animation-delay-400 relative z-10 w-full">
+        <EventCountdown />
+      </div>
+
       {/* Registration Fee Highlight Banner */}
-      <div className="animate-fade-up animation-delay-500 relative z-10 mt-6 inline-flex flex-wrap items-center justify-center gap-2 px-5 py-2.5 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md shadow-lg shadow-brand-500/10 text-center">
+      <div className="animate-fade-up animation-delay-500 relative z-10 inline-flex flex-wrap items-center justify-center gap-2 px-5 py-2.5 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md shadow-lg shadow-brand-500/10 text-center">
         <span className="text-brand-300 font-semibold text-sm">Registration Fee:</span>
         <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-bold">
           ₹150 Early Bird
@@ -241,8 +243,11 @@ function HeroSection() {
 
       {/* CTAs */}
       <div className="animate-fade-up animation-delay-600 relative z-10 mt-8 flex flex-col sm:flex-row gap-4">
-        <Link to="/register" className="btn-primary text-base px-8 py-4">
+        <Link to="/register" className="btn-primary text-base px-8 py-4 shadow-xl shadow-brand-500/25">
           Register Your Team <ArrowRight size={18} />
+        </Link>
+        <Link to="/dashboard/submit" className="btn-outline text-base px-8 py-4 border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10">
+          Submit Idea <Compass size={18} />
         </Link>
         <a href="#themes" className="btn-outline text-base px-8 py-4">
           Explore Themes
@@ -266,7 +271,7 @@ function HeroSection() {
 
       {/* Scroll cue */}
       <a
-        href="#themes"
+        href="#about-brief"
         className="absolute bottom-4 left-1/2 -translate-x-1/2 text-gray-500 hover:text-gray-300 transition-colors animate-bounce"
         aria-label="Scroll down"
       >
@@ -276,11 +281,87 @@ function HeroSection() {
   );
 }
 
+// ─── About Section Preview ───────────────────────────────────────────────────
+
+function AboutSection() {
+  return (
+    <section id="about-brief" className="py-24 px-4 bg-gray-950 border-t border-white/5">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <span className="text-brand-400 font-semibold text-sm tracking-widest uppercase mb-3 block flex items-center gap-1.5">
+            <Target size={14} /> Mission &amp; Purpose
+          </span>
+          <h2 className="section-title mb-6">
+            Where Ideas Collide with <span className="gradient-text">Innovation</span>
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed mb-4">
+            <strong>IDEAVYA 2026</strong> is the flagship national innovation challenge organized by{' '}
+            <span className="text-white font-semibold">Madanapalle Institute of Technology &amp; Science (MITS)</span> in
+            association with <span className="text-cyan-300 font-semibold">Pathvision Innovations</span>.
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed mb-6">
+            Designed to bridge the gap between classroom engineering theory and tangible societal impact, IDEAVYA mandates
+            interdisciplinary teamwork. Student squads integrate computer science, electronics, mechanical, and civil disciplines
+            to engineer scalable solutions for India and the world.
+          </p>
+          <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="glass-card p-4 border-brand-500/20">
+              <div className="font-display text-2xl font-black text-white">48+ Hours</div>
+              <div className="text-xs text-gray-400 mt-1">Intensive Mentorship &amp; Hackathon</div>
+            </div>
+            <div className="glass-card p-4 border-cyan-500/20">
+              <div className="font-display text-2xl font-black text-white">5 Domains</div>
+              <div className="text-xs text-gray-400 mt-1">High-Impact Innovation Themes</div>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <Link to="/about" className="btn-primary text-sm px-6 py-3">
+              Read Our Full Story <ArrowRight size={15} />
+            </Link>
+            <Link to="/schedule" className="btn-outline text-sm px-6 py-3">
+              Event Schedule
+            </Link>
+          </div>
+        </div>
+
+        {/* Feature highlight card */}
+        <div className="glass-card p-8 border-brand-500/30 bg-gradient-to-br from-brand-500/10 via-purple-500/5 to-cyan-500/10 relative overflow-hidden">
+          <div className="w-12 h-12 rounded-2xl bg-brand-500/20 flex items-center justify-center mb-6 text-brand-300">
+            <Sparkles size={24} />
+          </div>
+          <h3 className="font-display font-bold text-white text-xl mb-3">Why IDEAVYA Matters</h3>
+          <ul className="space-y-3.5 text-sm text-gray-300 mb-6">
+            <li className="flex items-start gap-2.5">
+              <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-0.5" />
+              <span><strong>Interdisciplinary Mandate:</strong> Solve problems by uniting multiple engineering disciplines.</span>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-0.5" />
+              <span><strong>Direct Industry Mentorship:</strong> 1-on-1 architecture clinics from Pathvision practitioners.</span>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-0.5" />
+              <span><strong>MITS Incubation Pathway:</strong> Direct fast-track incubation support for standout prototypes.</span>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <CheckCircle2 size={16} className="text-emerald-400 shrink-0 mt-0.5" />
+              <span><strong>Cash Pool &amp; Trophies:</strong> ₹12,500 prize pool awarded live on MITS Campus.</span>
+            </li>
+          </ul>
+          <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-xs text-cyan-300">
+            ⚡ Semi-Finale &amp; Grand Finale: 10 &amp; 11 November 2026 @ MITS Campus
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Innovation Themes Section ───────────────────────────────────────────────
 
 function ThemesSection() {
   return (
-    <section id="themes" className="py-24 px-4 bg-gray-950">
+    <section id="themes" className="py-24 px-4 bg-gray-900/50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-brand-400 font-semibold text-sm tracking-widest uppercase mb-3 block">Official Tracks</span>
@@ -321,7 +402,7 @@ function ThemesSection() {
           {/* Guidelines Box */}
           <div className="glass-card p-7 border-brand-500/40 bg-brand-500/10 flex flex-col justify-between">
             <div>
-              <div className="w-12 h-12 rounded-xl bg-brand-500/20 flex items-center justify-center mb-5">
+              <div className="w-12 h-12 rounded-2xl bg-brand-500/20 flex items-center justify-center mb-5">
                 <Sparkles size={24} className="text-brand-400" />
               </div>
               <h3 className="font-display font-bold text-white text-lg mb-2">Important Guidelines</h3>
@@ -354,7 +435,7 @@ function ThemesSection() {
 
 function CompetitionFormatSection() {
   return (
-    <section className="py-24 px-4 bg-gray-900/50">
+    <section className="py-24 px-4 bg-gray-950">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-accent-400 font-semibold text-sm tracking-widest uppercase mb-3 block">Roadmap</span>
@@ -394,7 +475,7 @@ function CompetitionFormatSection() {
 
 function RegistrationFeeSection() {
   return (
-    <section id="pricing" className="py-24 px-4 bg-gray-950">
+    <section id="pricing" className="py-24 px-4 bg-gray-900/50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <span className="text-brand-400 font-semibold text-sm tracking-widest uppercase mb-3 block">Registration</span>
@@ -425,7 +506,7 @@ function CTASection() {
               Compete for the ₹12,500 prize pool, gain direct industry mentorship, and showcase your innovation at MITS Campus.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/register" className="btn-primary text-base px-10 py-4">
+              <Link to="/register" className="btn-primary text-base px-10 py-4 shadow-xl">
                 Register Your Team (From ₹150) <ArrowRight size={18} />
               </Link>
               <Link to="/tracks" className="btn-outline text-base px-10 py-4">
@@ -445,9 +526,13 @@ export default function HomePage() {
   return (
     <main>
       <HeroSection />
+      <AboutSection />
       <ThemesSection />
       <CompetitionFormatSection />
+      <HomePrizesSection />
       <RegistrationFeeSection />
+      <SponsorsSection />
+      <HomeFAQSection />
       <CTASection />
     </main>
   );

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import {
   Zap, Trophy, Users, Calendar, ArrowRight,
   Cpu, Building2, Car, Leaf, HeartHandshake, ChevronDown,
-  MapPin, CheckCircle2, Layers, Award, Sparkles, Target, Compass
+  MapPin, CheckCircle2, Layers, Award, Target, Compass
 } from 'lucide-react';
 import RegistrationFeeCard from '../components/payment/RegistrationFeeCard';
 import RegistrationQRCodeCard from '../components/payment/RegistrationQRCodeCard';
@@ -328,7 +328,7 @@ function AboutSection() {
         {/* Feature highlight card */}
         <div className="glass-card p-8 border-brand-500/30 bg-gradient-to-br from-brand-500/10 via-purple-500/5 to-cyan-500/10 relative overflow-hidden">
           <div className="w-12 h-12 rounded-2xl bg-brand-500/20 flex items-center justify-center mb-6 text-brand-300">
-            <Sparkles size={24} />
+            <Award size={24} className="text-brand-400" />
           </div>
           <h3 className="font-display font-bold text-white text-xl mb-3">Why IDEAVYA Matters</h3>
           <ul className="space-y-3.5 text-sm text-gray-300 mb-6">
@@ -400,31 +400,31 @@ function ThemesSection() {
             </div>
           ))}
 
-          {/* Guidelines Box */}
-          <div className="glass-card p-7 border-brand-500/40 bg-brand-500/10 flex flex-col justify-between">
+          {/* Track Guide & Problem Statements */}
+          <div className="glass-card p-6 border-white/10 hover:border-brand-500/40 bg-white/[0.02] flex flex-col justify-between hover:scale-[1.02] transition-all duration-300 group">
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-brand-500/20 flex items-center justify-center mb-5">
-                <Sparkles size={24} className="text-brand-400" />
+              <div className="flex items-center justify-between mb-5">
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Compass size={24} className="text-cyan-400" />
+                </div>
+                <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                  Track Guide
+                </span>
               </div>
-              <h3 className="font-display font-bold text-white text-lg mb-2">Important Guidelines</h3>
-              <ul className="space-y-2.5 text-xs text-gray-300">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 size={14} className="text-brand-400 shrink-0 mt-0.5" />
-                  <span><strong>Team Size:</strong> 2 to 4 members.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 size={14} className="text-brand-400 shrink-0 mt-0.5" />
-                  <span><strong>Interdisciplinary:</strong> Mandatory representation from at least two departments.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 size={14} className="text-brand-400 shrink-0 mt-0.5" />
-                  <span><strong>Venue:</strong> MITS Deemed to be University Campus (10 &amp; 11 Nov 2026).</span>
-                </li>
-              </ul>
+              <h3 className="font-display font-bold text-white text-lg mb-2 leading-snug">
+                Problem Statements & Rubrics
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Review sample problem statements, recommended technology stacks, and judging criteria across all 5 themes.
+              </p>
             </div>
-            <Link to="/register" className="btn-primary w-full justify-center text-xs py-3 mt-6">
-              Start Team Registration <ArrowRight size={14} />
-            </Link>
+
+            <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+              <span className="text-xs text-gray-400">All 5 Themes</span>
+              <Link to="/tracks" className="text-xs font-semibold text-brand-400 hover:text-brand-300 flex items-center gap-1">
+                Explore Tracks <ArrowRight size={12} />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

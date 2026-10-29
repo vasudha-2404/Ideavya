@@ -1,4 +1,4 @@
-import { ExternalLink, QrCode, Sparkles } from 'lucide-react';
+import { ExternalLink, QrCode } from 'lucide-react';
 
 interface RegistrationQRCodeCardProps {
   className?: string;
@@ -16,9 +16,9 @@ export default function RegistrationQRCodeCard({ className = '' }: RegistrationQ
 
       <div>
         {/* Badge */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-500/20 text-brand-300 border border-brand-500/30 shadow-sm mb-4">
-          <Sparkles size={12} className="text-brand-400" />
-          <span>Quick Registration</span>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/15 text-brand-300 border border-brand-500/30 shadow-sm mb-4">
+          <QrCode size={13} className="text-brand-400" />
+          <span>Official Event Registration</span>
         </div>
 
         {/* Heading */}

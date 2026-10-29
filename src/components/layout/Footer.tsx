@@ -74,27 +74,29 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950 border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <footer className="bg-midnight-950 border-t border-cyan-500/15 relative overflow-hidden">
+      {/* Subtle ambient footer glow */}
+      <div className="absolute bottom-0 left-1/3 w-[500px] h-[200px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2.5 mb-4 w-fit group">
-              <div className="w-9 h-9 rounded-xl bg-brand-500 flex items-center justify-center shadow-lg shadow-brand-500/30 group-hover:scale-110 transition-transform">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 via-brand-500 to-purple-600 flex items-center justify-center shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-all">
                 <Zap size={18} className="text-white" fill="white" />
               </div>
               <div className="leading-tight">
-                <span className="font-display font-bold text-white text-sm tracking-wide block">IDEAVYA</span>
-                <span className="font-display font-semibold text-brand-400 text-xs tracking-widest block">2026</span>
+                <span className="font-display font-extrabold text-white text-base tracking-wide block">IDEAVYA</span>
+                <span className="font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 text-xs tracking-widest block">2026</span>
               </div>
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-3">
+            <p className="text-slate-400 text-sm leading-relaxed max-w-xs mb-3">
               Turn real-world challenges into real solutions. Organized by MITS Deemed to be University.
             </p>
 
             {/* In Association with Pathvision Innovations (Text only) */}
-            <div className="mb-6 text-xs text-gray-400">
-              In Association with <span className="font-semibold text-brand-300 tracking-wide">Pathvision Innovations</span>
+            <div className="mb-6 text-xs text-slate-400">
+              In Association with <span className="font-semibold text-cyan-300 tracking-wide">Pathvision Innovations</span>
             </div>
 
             {/* Google, Chrome, Mail Buttons */}
@@ -107,7 +109,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   aria-label={label}
                   title={desc}
-                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15 hover:border-white/30 hover:scale-110 transition-all duration-200 shadow-sm"
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15 hover:border-cyan-500/40 hover:scale-105 transition-all duration-200 shadow-sm"
                 >
                   <Icon size={18} />
                 </a>
@@ -124,7 +126,7 @@ export default function Footer() {
                   <li key={link.path}>
                     <Link
                       to={link.path}
-                      className="text-gray-400 hover:text-brand-400 text-sm transition-colors flex items-center gap-1 group"
+                      className="text-slate-400 hover:text-cyan-400 text-sm transition-colors flex items-center gap-1 group"
                     >
                       {link.label}
                       <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -138,10 +140,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm">
+          <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} IDEAVYA 2026 · MITS Deemed to be University. All rights reserved.
           </p>
-          <p className="text-gray-500 text-xs">
+          <p className="text-slate-500 text-xs">
             Pathvision Innovations &amp; MITS Innovation Initiative
           </p>
         </div>

@@ -51,7 +51,7 @@ interface InputProps {
 function FormInput({ id, label, icon: Icon, type = 'text', value, onChange, error, placeholder, required }: InputProps) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-gray-300 mb-1.5">
+      <label htmlFor={id} className="block text-sm font-medium text-slate-300 mb-1.5">
         {label} {required && <span className="text-red-400">*</span>}
       </label>
       <div className="relative">
@@ -62,8 +62,8 @@ function FormInput({ id, label, icon: Icon, type = 'text', value, onChange, erro
           value={value}
           onChange={e => onChange(e.target.value)}
           placeholder={placeholder}
-          className={`w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border text-white placeholder-gray-600 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500/50 ${
-            error ? 'border-red-500/60' : 'border-white/15 hover:border-white/25 focus:border-brand-500/50'
+          className={`w-full pl-10 pr-4 py-3 rounded-xl bg-midnight-900/60 border text-slate-100 placeholder-slate-500 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500/40 ${
+            error ? 'border-red-500/60' : 'border-white/10 hover:border-cyan-500/30 focus:border-cyan-400/60'
           }`}
         />
       </div>
@@ -102,13 +102,16 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 pt-24 pb-16 px-4">
+    <div className="min-h-screen bg-midnight-950 text-slate-100 relative overflow-hidden pt-28 pb-20 px-4">
+      {/* Moonlight aura background orbs */}
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-60 right-10 w-[400px] h-[300px] bg-purple-600/10 rounded-full blur-[130px] pointer-events-none" />
       <div className="max-w-xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-10">
-          <span className="text-brand-400 font-semibold text-sm tracking-widest uppercase mb-3 block">Step 1 of 2</span>
-          <h1 className="font-display text-4xl font-bold text-white mb-3">Register Now</h1>
+          <span className="text-cyan-400 font-semibold text-xs tracking-widest uppercase mb-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 inline-block">Step 1 of 2</span>
+          <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-white mb-3 tracking-tight"><span className="gradient-text">Register</span> for IDEAVYA</h1>
           <p className="text-gray-400">
             Fill in your details. You'll be taken to payment on the next step.
           </p>
@@ -124,15 +127,15 @@ export default function RegisterPage() {
         <RegistrationQRCodeCard className="mb-6" />
 
         {/* Fee summary */}
-        <div className="glass-card p-4 mb-6 border-emerald-500/30 bg-emerald-500/5">
+        <div className="glass-card p-4 mb-6 border-cyan-500/30 bg-cyan-500/5 shadow-[0_0_20px_rgba(6,182,212,0.1)]">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-gray-300 text-sm font-medium">Team Registration Fee</span>
-            <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">
+            <span className="text-slate-200 text-sm font-medium">Team Registration Fee</span>
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30">
               Per Team
             </span>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span className="text-emerald-400 font-semibold">⚡ Early Bird: ₹150</span>
+            <span className="text-cyan-300 font-semibold">⚡ Early Bird: ₹150</span>
             <span className="text-gray-400">Standard: ₹200</span>
           </div>
         </div>
@@ -162,8 +165,8 @@ export default function RegisterPage() {
                   onClick={() => setField('participant_type', type)}
                   className={`flex items-center justify-center gap-2 py-2.5 rounded-xl border text-sm font-medium transition-all ${
                     form.participant_type === type
-                      ? 'bg-brand-500/20 border-brand-500/60 text-brand-300'
-                      : 'bg-white/5 border-white/15 text-gray-400 hover:border-white/25'
+                      ? 'bg-cyan-500/20 border-cyan-400/60 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.15)]'
+                      : 'bg-midnight-900/60 border-white/10 text-slate-400 hover:border-cyan-500/30 hover:text-slate-200'
                   }`}
                 >
                   {type === 'team' ? <Users size={15} /> : <User size={15} />}
@@ -208,9 +211,9 @@ export default function RegisterPage() {
                 id="track-select"
                 value={form.track}
                 onChange={e => setField('track', e.target.value)}
-                className={`w-full px-4 py-3 pr-10 rounded-xl bg-white/5 border text-sm appearance-none transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500/50 ${
-                  form.track ? 'text-white' : 'text-gray-600'
-                } ${errors.track ? 'border-red-500/60' : 'border-white/15 hover:border-white/25 focus:border-brand-500/50'}`}
+                className={`w-full px-4 py-3 pr-10 rounded-xl bg-midnight-900/80 border text-sm appearance-none transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500/40 ${
+                  form.track ? 'text-slate-100' : 'text-slate-500'
+                } ${errors.track ? 'border-red-500/60' : 'border-white/10 hover:border-cyan-500/30 focus:border-cyan-400/60'}`}
               >
                 <option value="" disabled className="bg-gray-900">Select your track…</option>
                 {TRACKS.map(t => (

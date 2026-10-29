@@ -46,20 +46,20 @@ export default function EventCountdown() {
 
   return (
     <div className="w-full max-w-2xl mx-auto my-6 px-4">
-      <div className="flex items-center justify-center gap-2 mb-3 text-xs uppercase tracking-widest text-cyan-400 font-bold">
-        <Clock size={14} className="animate-spin-slow" />
-        Countdown to Innovation Marathon
+      <div className="flex items-center justify-center gap-2 mb-3 text-xs uppercase tracking-widest text-cyan-300 font-bold">
+        <Clock size={13} className="text-cyan-400" />
+        <span>Grand Finale Countdown</span>
       </div>
-      <div className="grid grid-cols-4 gap-3 md:gap-4 text-center">
+      <div className="grid grid-cols-4 gap-2.5 sm:gap-4 text-center">
         {units.map((unit) => (
           <div
             key={unit.label}
-            className="glass-card p-3 md:p-4 border-cyan-500/20 bg-gradient-to-b from-cyan-500/10 via-transparent to-transparent"
+            className="glass-card p-3 sm:p-4 border-cyan-400/25 bg-gradient-to-b from-white/[0.08] via-midnight-850/60 to-midnight-950/80 shadow-lg shadow-cyan-950/50 relative overflow-hidden group hover:border-cyan-300/40"
           >
-            <div className="font-display text-2xl md:text-4xl font-black text-white font-mono tracking-tight">
+            <div className="font-display text-2xl sm:text-4xl md:text-5xl font-black text-white font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-cyan-100 to-indigo-200 drop-shadow-[0_2px_10px_rgba(34,211,238,0.3)]">
               {String(unit.value).padStart(2, '0')}
             </div>
-            <div className="text-[10px] md:text-xs font-semibold text-gray-400 mt-1 tracking-wider">
+            <div className="text-[10px] sm:text-xs font-semibold text-cyan-300/80 mt-1 tracking-widest uppercase">
               {unit.label}
             </div>
           </div>

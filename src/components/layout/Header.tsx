@@ -32,7 +32,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-gray-950/90 backdrop-blur-lg border-b border-white/10 shadow-xl'
+          ? 'bg-midnight-950/85 backdrop-blur-xl border-b border-cyan-500/20 shadow-2xl shadow-cyan-950/50'
           : 'bg-transparent'
       }`}
     >
@@ -41,12 +41,12 @@ export default function Header() {
 
           {/* Logo (Left side) */}
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-brand-500 flex items-center justify-center shadow-lg shadow-brand-500/30 group-hover:shadow-brand-500/50 transition-all duration-200 group-hover:scale-110">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 group-hover:shadow-cyan-400/50 transition-all duration-200 group-hover:scale-110 border border-white/20">
               <Zap size={18} className="text-white" fill="white" />
             </div>
             <div className="leading-tight">
-              <span className="font-display font-bold text-white text-sm tracking-wide block">IDEAVYA</span>
-              <span className="font-display font-semibold text-brand-400 text-xs tracking-widest block">2026</span>
+              <span className="font-display font-extrabold text-white text-sm tracking-wide block">IDEAVYA</span>
+              <span className="font-display font-semibold text-cyan-300 text-xs tracking-widest block">2026</span>
             </div>
           </Link>
 
@@ -58,8 +58,8 @@ export default function Header() {
                 to={link.path}
                 className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   location.pathname === link.path
-                    ? 'text-brand-400 bg-brand-500/10'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'text-cyan-300 bg-cyan-500/10 border border-cyan-400/20 shadow-sm'
+                    : 'text-gray-300 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {link.label}
@@ -72,7 +72,7 @@ export default function Header() {
                 to="/judge"
                 className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all ${
                   location.pathname === '/judge'
-                    ? 'text-purple-300 bg-purple-500/20'
+                    ? 'text-purple-300 bg-purple-500/20 border border-purple-400/30'
                     : 'text-purple-400 hover:bg-purple-500/10'
                 }`}
               >
@@ -86,7 +86,7 @@ export default function Header() {
                 to="/admin"
                 className={`px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all ${
                   location.pathname === '/admin'
-                    ? 'text-emerald-300 bg-emerald-500/20'
+                    ? 'text-emerald-300 bg-emerald-500/20 border border-emerald-400/30'
                     : 'text-emerald-400 hover:bg-emerald-500/10'
                 }`}
               >
@@ -119,8 +119,8 @@ export default function Header() {
               </Link>
             )}
 
-            <Link to="/register" id="header-register-btn" className="btn-primary text-xs py-2 px-4">
-              Register Team
+            <Link to="/register" id="header-register-btn" className="btn-primary text-xs py-2 px-4 shadow-md shadow-cyan-500/25">
+              Register Now
             </Link>
 
             {/* Pathvision Logo on the Right */}
@@ -162,14 +162,14 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-gray-950/95 backdrop-blur-xl border-t border-white/10 px-4 py-4 flex flex-col gap-1">
+        <div className="md:hidden bg-midnight-950/95 backdrop-blur-2xl border-t border-cyan-500/20 px-4 py-4 flex flex-col gap-1 shadow-2xl">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
               className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                 location.pathname === link.path
-                  ? 'text-brand-400 bg-brand-500/10'
+                  ? 'text-cyan-300 bg-cyan-500/15 border border-cyan-400/30'
                   : 'text-gray-300 hover:text-white hover:bg-white/5'
               }`}
             >
@@ -209,7 +209,7 @@ export default function Header() {
           </div>
 
           <Link to="/register" className="btn-primary text-sm mt-3 justify-center">
-            Register Team
+            Register Now
           </Link>
         </div>
       )}

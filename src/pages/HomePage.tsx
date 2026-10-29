@@ -190,7 +190,7 @@ function HeroSection() {
             <span>Organized by</span>
             <span className="font-bold text-white tracking-wide">MITS Deemed to be University</span>
           </div>
-          <span className="text-slate-500">•</span>
+          
           <div className="flex items-center gap-2">
             <span className="text-xs text-slate-200 font-medium">In Association with</span>
             <span className="text-xs font-bold text-blue-300 tracking-wide">Pathvision Innovations</span>

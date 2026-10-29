@@ -29,10 +29,10 @@ export default function HomeFAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faqs" className="py-24 px-4 bg-gray-900/60 border-t border-white/5">
+    <section id="faqs" className="py-24 px-4 bg-transparent border-t border-white/5">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-cyan-400 font-semibold text-sm tracking-widest uppercase mb-3 block flex items-center justify-center gap-1.5">
+          <span className="text-blue-300 font-semibold text-sm tracking-widest uppercase mb-3 block flex items-center justify-center gap-1.5">
             <HelpCircle size={14} /> Clear Answers
           </span>
           <h2 className="section-title mb-4">
@@ -50,7 +50,7 @@ export default function HomeFAQSection() {
               <div
                 key={faq.q}
                 className={`glass-card transition-all duration-300 overflow-hidden ${
-                  isOpen ? 'border-brand-500/40 bg-white/[0.07]' : 'hover:border-white/20'
+                  isOpen ? 'border-blue-400/40 bg-white/[0.07]' : 'hover:border-white/20'
                 }`}
               >
                 <button
@@ -63,8 +63,8 @@ export default function HomeFAQSection() {
                   </span>
                   <ChevronDown
                     size={18}
-                    className={`text-brand-400 shrink-0 transition-transform duration-300 ${
-                      isOpen ? 'rotate-180 text-cyan-400' : ''
+                    className={`text-blue-300 shrink-0 transition-transform duration-300 ${
+                      isOpen ? 'rotate-180 text-blue-300' : ''
                     }`}
                   />
                 </button>

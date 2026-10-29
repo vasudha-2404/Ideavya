@@ -17,7 +17,7 @@ const partners = [
     role: 'Mentorship, Technology & Jury Partner',
     url: 'https://www.mits.ac.in',
     badge: 'In Association With',
-    badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+    badgeColor: 'bg-blue-600/20 text-white border-blue-400/40',
     hasLogo: true,
   },
   {
@@ -27,7 +27,7 @@ const partners = [
     role: 'Incubation Pathway',
     url: 'https://www.mits.ac.in',
     badge: 'Ecosystem Partner',
-    badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+    badgeColor: 'bg-white/10 text-white border-white/20',
   },
   {
     category: 'Technical Chapter',
@@ -36,16 +36,16 @@ const partners = [
     role: 'National Innovation Facilitation',
     url: 'https://www.mits.ac.in',
     badge: 'Knowledge Partner',
-    badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
+    badgeColor: 'bg-blue-700/20 text-blue-200 border-blue-400/30',
   },
 ];
 
 export default function SponsorsSection() {
   return (
-    <section id="sponsors" className="py-24 px-4 bg-gray-950 border-t border-white/5">
+    <section id="sponsors" className="py-24 px-4 bg-midnight-950 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-brand-400 font-semibold text-sm tracking-widest uppercase mb-3 block flex items-center justify-center gap-1.5">
+          <span className="text-blue-300 font-semibold text-sm tracking-widest uppercase mb-3 block flex items-center justify-center gap-1.5">
             <Sparkles size={14} /> Ecosystem &amp; Partners
           </span>
           <h2 className="section-title mb-4">
@@ -71,7 +71,7 @@ export default function SponsorsSection() {
                     href={partner.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 group-hover:text-brand-400 transition-colors"
+                    className="text-gray-500 group-hover:text-blue-300 transition-colors"
                   >
                     <ExternalLink size={14} />
                   </a>
@@ -86,7 +86,7 @@ export default function SponsorsSection() {
                     />
                   </div>
                 ) : (
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 text-brand-400">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 text-blue-300">
                     <Building size={20} />
                   </div>
                 )}

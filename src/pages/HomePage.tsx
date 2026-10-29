@@ -5,6 +5,7 @@ import {
   MapPin, CheckCircle2, Layers, Award, Sparkles, Target, Compass
 } from 'lucide-react';
 import RegistrationFeeCard from '../components/payment/RegistrationFeeCard';
+import RegistrationQRCodeCard from '../components/payment/RegistrationQRCodeCard';
 import EventCountdown from '../components/home/EventCountdown';
 import HomePrizesSection from '../components/home/HomePrizesSection';
 import SponsorsSection from '../components/home/SponsorsSection';
@@ -485,6 +486,9 @@ function RegistrationFeeSection() {
           </p>
         </div>
         <RegistrationFeeCard />
+        <div className="mt-12 max-w-xl mx-auto">
+          <RegistrationQRCodeCard />
+        </div>
       </div>
     </section>
   );

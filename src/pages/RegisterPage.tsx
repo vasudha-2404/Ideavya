@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowRight, User, Mail, Phone, School, Users, Loader2, AlertCircle, ChevronDown } from 'lucide-react';
 import { usePayment } from '../hooks/usePayment';
 import { useEventConfig } from '../hooks/useEventConfig';
+import RegistrationQRCodeCard from '../components/payment/RegistrationQRCodeCard';
 import type { RegistrationFormData, ParticipantType } from '../types/payment';
 
 const TRACKS = [
@@ -118,6 +119,9 @@ export default function RegisterPage() {
             </div>
           )}
         </div>
+
+        {/* Scan to Register */}
+        <RegistrationQRCodeCard className="mb-6" />
 
         {/* Fee summary */}
         <div className="glass-card p-4 mb-6 border-emerald-500/30 bg-emerald-500/5">
